@@ -271,7 +271,13 @@ body.index #main {
                 padding-top: 4.5em;
             }
 body #banner{
-    background: url("images/gmc_sierra.jpeg") !important;
+    /*background: url("images/gmc_sierra.jpeg") !important;
+    background-repeat: no-repeat;*/
+    background: url("images/gmc_sierra.jpeg") no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 ul.buttons.stacked li {
             display: block;

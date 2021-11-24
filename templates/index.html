@@ -16,7 +16,7 @@
 </head>
 <body >
   <!-- Header -->
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><h3>Predict your car</h3></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,12 +47,16 @@
 						<br>
 		
 	</p>
+	<br />
+	<ul class="buttons stacked">
+				<li><a href="#main" class="button fit scrolly">Start</a></li>
+			</ul>
    	</div>
-   	<footer>
+   	<!--<footer>
 		   <ul class="buttons stacked">
 				<li><a href="#main" class="button fit scrolly">Start</a></li>
 			</ul>
-	</footer>
+	</footer>-->
    </section> 
     <!-- Main -->
 				<article id="main">
@@ -80,23 +84,43 @@
   										<p>The form below contains four questions:</p>
 	  									<form>
 										    <div class="form-group">
-										      <label for="price_range">Price Range:</label>
-											  <select class="form-control" id="price_range">
-											    <option>$15,000 - $24,000</option>
-											    <option>$25,000 - $34,000</option>
-											    <option>$35,000 - $44,000</option>
-											    <option>$45,000 - $54,000</option>
-											    <option>$54,000+</option>
+										      <label for="car_width">Car Width in inches:</label>
+											  <select class="form-control" id="car_width">
+											  	{% for car_width in data.car_widths %}
+												  <option value="{{ car_width }}">{{ car_width }}</option>
+												{% endfor %}
 											  </select>
 										    </div>
 										    <div class="form-group">
-										      <label for="car_width">Car Width in inches:</label>
-											  <select class="form-control" id="car_width">
-											    <option>45 - 55</option>
-											    <option>55 - 65</option>
-											    <option>65 - 75</option>
-											    <option>75+</option>
-											   
+										      <label for="car_weight">Car Weight:</label>
+											  <select class="form-control" id="car_weight">
+											  	{% for car_weight in data.car_weights %}
+												  <option value="{{ car_weight }}">{{ car_weight }}</option>
+												{% endfor %}
+											  </select>
+										    </div>
+										    <div class="form-group">
+										      <label for="engine_size">Engine Size:</label>
+											  <select class="form-control" id="engine_size">
+											  	{% for engine_size in data.engine_sizes %}
+												  <option value="{{ engine_size }}">{{ engine_size }}</option>
+												{% endfor %}
+											  </select>
+										    </div>
+										    <div class="form-group">
+										      <label for="engine_location">Engine Location:</label>
+											  <select class="form-control" id="engine_location">
+											  	{% for engine_location in data.engine_locations %}
+												  <option value="{{ engine_location }}">{{ engine_location }}</option>
+												{% endfor %}
+											  </select>
+										    </div>
+										    <div class="form-group">
+										      <label for="car_company">Car Company:</label>
+											  <select class="form-control" id="car_company">
+											  	{% for car_company in data.car_companys %}
+												  <option value="{{ car_company }}">{{ car_company }}</option>
+												{% endfor %}
 											  </select>
 										    </div>
 	  									</form>
