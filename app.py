@@ -4,7 +4,8 @@ from sqlalchemy import create_engine
 
 data_for_website = {}
 # link to your database
-engine = create_engine("postgresql://xsuqpfznpphjhp:cb6bee46fb171cabc3c2611382c2589f5be919bdac4a9ed68a8b1c78ebfb2645@ec2-3-231-112-124.compute-1.amazonaws.com:5432/d9vp4cuu7ce85k", echo = False)
+#engine = create_engine("postgresql://xsuqpfznpphjhp:cb6bee46fb171cabc3c2611382c2589f5be919bdac4a9ed68a8b1c78ebfb2645@ec2-3-231-112-124.compute-1.amazonaws.com:5432/d9vp4cuu7ce85k", echo = False)
+engine = create_engine("postgresql://localhost/d9vp4cuu7ce85k", echo = False)
 
 
 #Initiate Flask app
