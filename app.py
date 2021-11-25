@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 
 data_for_website = {}
 # link to your database
-engine = create_engine("postgres://viddpqdpqdroei:d019bdb875bd4058405ad95a60b2219686ba460b35980a4d7a54d26facd952f3@ec2-3-95-146-114.compute-1.amazonaws.com:5432/d85p1pf5jsm5gf", echo = False)
+engine = create_engine("postgresql://tvzpjkdnlpksyu:244abbad96e1f6c9af98e9dd09d8cc3785e760c9e5eedbd65736c611e0a9fc90@ec2-44-195-186-235.compute-1.amazonaws.com:5432/d1loaj467ucgkv", echo = False)
 #engine = create_engine("postgres://localhost:5432/d9vp4cuu7ce85k", echo = False)
 
 
@@ -24,10 +24,11 @@ def home():
 def loadCleanedCSVToPostgreSQL():
 	cars = pd.read_csv('Resources/cars_cleaned.csv')
 	cars.to_sql('cars', engine, if_exists='replace', index = False)
-	return true
+	#return true
 
 def getLookupValues():
-	loadCleanedCSVToPostgreSQL
+	cars = pd.read_csv('Resources/cars_cleaned.csv')
+	cars.to_sql('cars', engine, if_exists='replace', index = False)
 	carwidthArray= []
 	carwidths = engine.execute('select distinct carwidth from cars order by carwidth desc').fetchall()
 	carwidths=[i[0] for i in carwidths]
