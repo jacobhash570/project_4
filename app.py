@@ -1,10 +1,11 @@
-from flask import Flask, json, redirect, jsonify, render_template
+from flask import Flask, json, redirect, jsonify, render_template, request
 import pandas as pd
+import joblib
 from sqlalchemy import create_engine
 
 data_for_website = {}
 # link to your database
-engine = create_engine("postgresql://tvzpjkdnlpksyu:244abbad96e1f6c9af98e9dd09d8cc3785e760c9e5eedbd65736c611e0a9fc90@ec2-44-195-186-235.compute-1.amazonaws.com:5432/d1loaj467ucgkv", echo = False)
+engine = create_engine("postgresql://twnoqdzrlkubhw:cfaeb39a268eba169c9b9e2c306ccc7323e76bd4b96e11b9bd1bf3e861bd97d0@ec2-52-2-245-64.compute-1.amazonaws.com:5432/d9quhrtbk5csb8", echo = False)
 #engine = create_engine("postgres://localhost:5432/d9vp4cuu7ce85k", echo = False)
 
 
@@ -12,7 +13,20 @@ engine = create_engine("postgresql://tvzpjkdnlpksyu:244abbad96e1f6c9af98e9dd09d8
 app = Flask(__name__)
 
 
-
+@app.route('/predictPrice', methods=['POST'])
+def predictPrice():
+	model= joblib.load('finalModel_Hina.joblib')
+    
+	columns = ['enginelocation', 'carwidth', 'carheight', 'curbweight', 'enginesize', 'car_company']
+	carwidth=request.json.get("carWidth")
+	curbweight=request.json.get("carWeight")
+	enginesize=request.json.get("engineSize")
+	enginelocation=request.json.get("engineLocation")
+	carheight=request.json.get("carHeight")
+	carCompany = carNameEnumerated(request.json.get("carCompany"))
+	test_data = pd.DataFrame([[enginelocation, carwidth, carheight, curbweight, enginesize, carCompany]], columns=columns)
+	pred = model.predict(test_data)
+	return {"Prediction": round(pred[0],2)}
 #Handle the default route and render the index.html
 @app.route('/')
 def home():
@@ -57,6 +71,13 @@ def getLookupValues():
 		engineLocationArray.append(engineLocation)
 	data_for_website['engine_locations'] = engineLocationArray
 
+	carHeightArray = []
+	carHeights = engine.execute('select distinct carheight from cars order by carheight desc').fetchall()
+	carHeights=[i[0] for i in carHeights]
+	for carHeight in carHeights:
+		carHeightArray.append(carHeight)
+	data_for_website['car_heights'] = carHeightArray
+
 	carCompanyArray = []
 	carCompanys = engine.execute('select distinct car_company from cars order by car_company desc').fetchall()
 	carCompanys=[i[0] for i in carCompanys]
@@ -71,6 +92,57 @@ def getLookupValues():
 def checkIfLookupDataisLoaded():
 	return true
 
-	
+def carNameEnumerated(carName):
+	if carName == 'toyota':
+		return 1
+	elif carName == 'nissan':
+		return 2
+	elif carName == 'mazda':
+		return 3
+	elif carName == 'mitsubishi':
+		return 4
+	elif carName == 'honda':
+		return 5
+	elif carName == 'volkswagen':
+		return 6
+	elif carName == 'subaru':
+		return 7
+	elif carName == 'peugeot':
+		return 8
+	elif carName == 'volvo':
+		return 9
+	elif carName == 'dodge':
+		return 10
+	elif carName == 'buick':
+		return 11
+	elif carName == 'bmw':
+		return 12
+	elif carName == 'audi':
+		return 13
+	elif carName == 'plymouth':
+		return 14
+	elif carName == 'saab':
+		return 15
+	elif carName == 'porsche':
+		return 16
+	elif carName == 'isuzu':
+		return 17
+	elif carName == 'jaguar':
+		return 18
+	elif carName == 'chevrolet':
+		return 19
+	elif carName == 'alfa-romero':
+		return 20
+	elif carName == 'renault':
+		return 21
+	elif carName == 'mercury':
+		return 22
+	else:
+		return 1
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=False)
