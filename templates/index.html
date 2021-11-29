@@ -18,7 +18,7 @@
   <!-- Header -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><h3>Predict car price</h3></a>
+        <a class="navbar-brand" href="#"><h1>Predict car price</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -87,7 +87,7 @@
 											  </select>
 										    </div>
 										    <div class="form-group">
-										      <label for="car_weight">Car Weight:</label>
+										      <label for="car_weight">Car Weight in lbs:</label>
 											  <select class="form-control" id="car_weight">
 											  	{% for car_weight in data.car_weights %}
 												  <option value="{{ car_weight }}">{{ car_weight }}</option>
@@ -111,7 +111,7 @@
 											  </select>
 										    </div>
 										    <div class="form-group">
-										      <label for="car_height">Car Height:</label>
+										      <label for="car_height">Car Height in inches:</label>
 											  <select class="form-control" id="car_height">
 											  	{% for car_height in data.car_heights %}
 												  <option value="{{ car_height }}">{{ car_height }}</option>
@@ -159,7 +159,7 @@
 					<!-- Three -->
 
 				</article>
-  <footer class="bg-light text-center text-lg-start">
+  <footer class="bg-light text-center text-lg-start footer-bg">
     <!-- Grid container -->
     <div class="container p-4">
     	<!--Grid row-->

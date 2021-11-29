@@ -161,6 +161,9 @@ a:hover {
     color: white !important;
 }
 
+.footer-bg{
+    background: rgba(55,61,73,0.975) !important
+}
 
 @-moz-keyframes reveal-banner {
         0% {
@@ -341,7 +344,7 @@ html {
         margin: 0 0 2em 0;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h2, h3, h4, h5, h6 {
         color: inherit;
         font-weight: 300;
         line-height: 1.75em;
@@ -349,11 +352,18 @@ html {
         text-transform: uppercase;
     }
 
-        h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-            color: inherit;
-            text-decoration: none;
-            border: 0;
-        }
+    h1 {
+        color: inherit;
+        font-weight: 300;
+        line-height: 1.75em;
+        text-transform: uppercase;
+    }
+
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        color: inherit;
+        text-decoration: none;
+        border: 0;
+    }
 
     h2 {
         font-size: 1.5em;
