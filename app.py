@@ -21,7 +21,7 @@ def predictPrice():
 	carwidth=request.json.get("carWidth")
 	curbweight=request.json.get("carWeight")
 	enginesize=request.json.get("engineSize")
-	enginelocation=request.json.get("engineLocation")
+	enginelocation=engineLocEnumerated(request.json.get("engineLocation"))
 	carheight=request.json.get("carHeight")
 	carCompany = carNameEnumerated(request.json.get("carCompany"))
 	test_data = pd.DataFrame([[enginelocation, carwidth, carheight, curbweight, enginesize, carCompany]], columns=columns)
@@ -91,6 +91,12 @@ def getLookupValues():
 
 def checkIfLookupDataisLoaded():
 	return true
+
+def engineLocEnumerated(engineLoc):
+	if engineLoc == "front":
+		return 1
+	else:
+		return 2
 
 def carNameEnumerated(carName):
 	if carName == 'toyota':
