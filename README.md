@@ -2,6 +2,7 @@
 
 ![alt text](https://github.com/jacobhash570/project_4/blob/main/Images/p_image9.png)
 
+## Final model produces an r2 of 0.866. 
 
 ## Contributors:
 
