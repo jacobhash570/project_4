@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/jacobhash570/project_4/blob/main/Images/p_image9.png)
 
-## Final model produces an r2 of 0.866 and is in FinalModelHina.ipynb. 
+## Final model produces an r2 of 0.866 using Linear Regression and is in FinalModelHina.ipynb. 
 
 ## Contributors:
 
