@@ -42,5 +42,6 @@
 
 ## JS function to post the price to HTML.
 ![alt text](https://github.com/jacobhash570/project_4/blob/main/Images/p_image7.png)
+
 ![alt text](https://github.com/jacobhash570/project_4/blob/main/Images/p_image8.png)
 
